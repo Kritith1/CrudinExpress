@@ -1,10 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express, { json } from "express";
+import userRouter from "./routes/user.routes.js";
+import mongoose from "mongoose";
 
 const app = express();
-const userRouter = require("./routes/user.routes");
 
-const db = mongoose
+mongoose
   .connect(
     "mongodb+srv://kritithapa:helloworld@mongocrud.8nyhg.mongodb.net/Portfolio?retryWrites=true&w=majority",
     {}
@@ -14,7 +14,7 @@ const db = mongoose
     return response;
   });
 
-app.use(express.json());
+app.use(json());
 app.use("/users", userRouter);
 
 app.get("/", (req, res) => {

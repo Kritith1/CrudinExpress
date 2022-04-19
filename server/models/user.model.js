@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const UserModel = mongoose.model(
+const UserModel = new mongoose.model(
   "User",
-  mongoose.Schema(
+  new mongoose.Schema(
     {
       name: {
         type: String,
@@ -12,4 +12,4 @@ const UserModel = mongoose.model(
   )
 );
 
-module.exports = UserModel;
+export default UserModel;

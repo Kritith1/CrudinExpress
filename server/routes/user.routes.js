@@ -1,11 +1,15 @@
-const express = require("express");
-const urlRoutes = express.Router();
+import { Router } from "express";
+import {
+  createOneRequest,
+  readOneRequest,
+  updateOneRequest,
+  deleteOneRequest,
+} from "../controllers/user.controller.js";
+const urlRoutes = Router();
 
-const controller = require("../controllers/user.controller");
+urlRoutes.post("/", createOneRequest);
+urlRoutes.get("/:id", readOneRequest);
+urlRoutes.put("/:id", updateOneRequest);
+urlRoutes.delete("/:id", deleteOneRequest);
 
-urlRoutes.post("/", controller.createOneRequest);
-urlRoutes.get("/:id", controller.readOneRequest);
-urlRoutes.put("/:id", controller.updateOneRequest);
-urlRoutes.delete("/:id", controller.deleteOneRequest);
-
-module.exports = urlRoutes;
+export default urlRoutes;
