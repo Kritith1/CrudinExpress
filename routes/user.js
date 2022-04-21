@@ -6,7 +6,9 @@ import {
   userUpdate,
   userDelete,
   userLogin,
+  userWelcome,
 } from "../controller/userController.js";
+import auth from "../middleware/auth.js";
 
 const useRouter = Router();
 
@@ -16,5 +18,6 @@ useRouter.get("/:id", userDetails);
 useRouter.patch("/:id", userUpdate);
 useRouter.delete("/:id", userDelete);
 useRouter.post("/login", userLogin);
+useRouter.post("/welcome", userWelcome, auth);
 
 export default useRouter;

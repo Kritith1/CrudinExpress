@@ -1,4 +1,6 @@
 import UserModel from "../model/userModel.js";
+import jsonwebtoken from "jsonwebtoken";
+import Bcrypt from "bcrypt";
 
 export const allUser = async (req, res) => {
   try {
@@ -17,13 +19,28 @@ export const userDetails = async (req, res) => {
   }
 };
 export const createUser = async (req, res) => {
-  const { userName, email, password } = req.body;
+  let { userName, email, password } = req.body;
+  password = Bcrypt.hashSync(password, 10);
 
   const userModel = new UserModel({
     userName: userName,
     email: email,
     password: password,
   });
+  //creating token
+  const token = jsonwebtoken.sign({ userName, email }, process.env.SECRET_KEY);
+  //save token
+  userModel.token = token;
+  try {
+    const savedUser = await userModel.save();
+    res.send({
+      savedUser,
+      message: "user created successfully",
+      statusCode: 200,
+    });
+  } catch (error) {
+    res.json(error);
+  }
   try {
     const savedUser = await userModel.save();
     res.send({
@@ -65,12 +82,20 @@ export const userLogin = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const userEmail = await UserModel.findOne({ email: email });
-    if (userEmail.password === password) {
-      res.status(201).json({ message: "Data login successfully" });
+    if (Bcrypt.compareSync(password, userEmail.password)) {
+      res.status(201).json({ message: "User login successfully" });
     } else {
       res.json({ message: "Invalid login details" });
     }
   } catch (error) {
-    res.status(400).send("User not found");
+    res.status(400).json({ message: "User not found" });
+  }
+};
+
+export const userWelcome = async (req, res) => {
+  try {
+    res.status(200).send("Welcome to login page");
+  } catch (error) {
+    res.status(401).send("invalid token");
   }
 };
