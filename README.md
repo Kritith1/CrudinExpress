@@ -1,6 +1,7 @@
-# CrudinExpress
+# PortfolioBackend
 * Crud in contact form using nodejs and mondodb
 * Get github api in projects from backend.
+* Cors for sending data to front end
 
 
 ### Commit Style:
@@ -13,18 +14,17 @@ git checkout -b "features/featurename"
 ```
 
 ## Packages Used
-```
-dependencies": {
+dependencies"
     
-    "axios": "^0.26.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "mongoose": "^6.3.0",
-     "nodemon": "^2.0.15",
-    "package": "^1.0.1"
-    },
-  ```
+   * "axios"
+   * "cors"
+   * "dotenv"
+   * "express"
+   * "mongoose"
+   * "nodemon"
+   *  "package"
+   
+  
 
   ## Available Scripts
 
@@ -36,8 +36,10 @@ Runs the app in the development mode.\
 Open [http://localhost:5000](http://localhost:5000) to view it in your browser.
 
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You may also see any errors in the console.
 
+
+# Routes Used
  ## For Contact Crud
  ```
  routes
