@@ -16,13 +16,13 @@ git checkout -b "features/featurename"
 ```
 dependencies": {
     
-    "axios": "^0.26.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "mongoose": "^6.3.0",
-     "nodemon": "^2.0.15",
-    "package": "^1.0.1"
+    "axios",
+    "cors",
+    "dotenv",
+    "express",
+    "mongoose",
+     "nodemon",
+    "package""
     },
   ```
 
