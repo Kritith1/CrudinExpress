@@ -6,7 +6,7 @@ import cors from "cors";
 
 const app = express();
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://kritiportfolio.netlify.app/",
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
