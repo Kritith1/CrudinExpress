@@ -1,5 +1,6 @@
 import UserModel from "../model/userModel.js";
-import { main } from "../utils/sendMail.js";
+import {mailer,mailerAdmin} from "../utils/sendMail.js"
+
 
 export const allUser = async (req, res) => {
   try {
@@ -27,7 +28,8 @@ export const createUser = async (req, res) => {
   });
   try {
     const savedUser = await userModel.save();
-    main(email, name);
+    await mailer(email,name);
+    await mailerAdmin({name, email, message});
     res.send({
       savedUser,
       message: "user created successfully",

@@ -11,7 +11,6 @@ const UserModel = mongoose.model(
       },
       email: {
         type: String,
-        unique: true,
         required: [true, "Please enter your email"],
         trim: true,
         unique: true,
