@@ -1,4 +1,4 @@
-import ProjectModel from "../model/Project.js";
+import ProjectModel from "../model/project.js"
 import axios from "axios";
 
 export const projectAll = async (req, res) => {
